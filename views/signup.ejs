@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+ <%- include('./partials/head.ejs') %>
+<body>
+  <%- include('./partials/Navbar.ejs') %>
+  <form class="signup-form" action="/user/sign-up" method="POST">
+    <input placeholder="Name" name="name" class="name" type="text">
+    <input placeholder="Email" name="email" type="email">
+    <input placeholder="password" minlength="6" name="password" type="password">
+    <div class="form-button-group">
+      <button type="reset" class="form-button clearBtn">Clear</button>
+      <button type="submit" class="form-button" >Sign Up</button>
+    </div>
+    <a href="/user/login">Already have an account? Login</a>
+  </form>
+</body>
+</html>

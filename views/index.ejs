@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+ <%- include('./partials/head.ejs') %>
+<body>
+  <%- include('./partials/Navbar.ejs') %>
+
+  <main class="show-all-blogs">
+    <% if(infos.length > 0 ) {%>
+      <% infos.forEach(info =>{ %>
+        <a href="/blog/<%= info.id %>">
+          <div class="blog-container">
+            <h2 class="title"><%= info.title %></h2>
+            <small class="author"><%= info.author %></small>
+            <p class="body"><%= info.body %></p>
+        </div>
+      </a>
+    <%})%>
+    <%}else{%>
+          <div class="blog-container">
+              <h2 style="color:#fff" class="title">Nothing To See Here</h2>
+          </div>
+      <%}%>
+  </main>
+  
+</body>
+</html>

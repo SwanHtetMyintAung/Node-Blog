@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+ <%- include('./partials/head.ejs') %>
+<body>
+  <%- include('./partials/Navbar.ejs') %>
+</body>
+
+<main class="show-all-users">
+  <% if(infos.length > 0 ) {%>
+    <% infos.forEach(info =>{ %>
+      <a href='#'>
+        <div class="user-container">
+          <h1 class="name">Name : <%= info.name %></h2>
+          <h3 class="email">Email : <%= info.email %></small>
+      </div>
+    </a>
+    <%})%>
+    <%}else{%>
+      <div class="blog-container">
+          <h2 style="color:#fff" class="title">Nothing To See Here</h2>
+      </div>
+  <%}%>
+  
+</main>
+</html>
