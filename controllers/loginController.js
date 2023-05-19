@@ -6,7 +6,6 @@ function login(req,res){
     USER.find(req.body)
     .then(result =>{
         if(result.length != 0) {
-            req.session.userId = result._id
             res.send(result)
         }else{
             res.send('No Document Found')
