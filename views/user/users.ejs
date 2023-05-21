@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
- <%- include('./partials/head.ejs') %>
+ <%- include('../partials/head.ejs') %>
 <body>
-  <%- include('./partials/Navbar.ejs') %>
+  <%- include('../partials/Navbar.ejs') %>
 </body>
 
 <main class="show-all-users">
   <% if(infos.length > 0 ) {%>
     <% infos.forEach(info =>{ %>
-      <a href='#'>
+      <a href='/user/<%=info._id%>'>
         <div class="user-container">
           <h1 class="name">Name : <%= info.name %></h2>
           <h3 class="email">Email : <%= info.email %></small>

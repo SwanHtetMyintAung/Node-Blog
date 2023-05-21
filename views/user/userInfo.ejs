@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+ <%- include('../partials/head.ejs') %>
+<body>
+  <%- include('../partials/Navbar.ejs') %>
+
+  <main class="singular-user">
+    <div class="utility-container">
+      <h2 class="blog-title"><%= info.name %></h2>
+      <div onclick="deleteRequest('/user/<%= info._id %>')" class="trash-bin-icon">
+        <i class="fas fa-trash black"></i>
+      </div>
+    </div>
+    <small class="blog-author"><%= info.email %></small>
+    <p class="blog-body"><%= info.password %></p>
+  </main>
+</body>
+</html>

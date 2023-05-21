@@ -1,34 +1,45 @@
 const INFO = require('../models/Info');
-const USER = require('../models/User')
+const USER = require('../models/User');
+let jwt = require('jsonwebtoken')
 
+function redirectToIndex(req,res){
+    res.redirect('/blogs')
+}
 function indexController(req,res){
     INFO.find()
     .then((result) =>{
-        res.render('index' , { title : "All Songs" , infos : result });
+        res.render('blog/index' , { title : "All Songs" , infos : result });
     })
     .catch(err => console.log(err.value))
 }
-function loginController(req,res){
-    res.render('login' , {title : "Login"});
-}
 function signupController(req,res){
-    res.render('signup' , {title : "Sign-Up"});
+    res.render('user/signup' , {title : "Sign-Up"});
 }
 function uploadController(req,res){
     console.log(req.session)
-    res.render('upload' , {title : "Upload"});
+    res.render('blog/upload' , {title : "Upload"});
 }
 function userController(req,res){
     USER.find()
     .then((result) =>{
-        res.render('users' , { title : "All User" , infos : result });
+        res.render('user/users' , { title : "All User" , infos : result });
     })
     .catch(err => console.log(err))
 }
+function loginController(req,res){
+    res.render('user/login' , {title : "Login"});
+}
+function logoutController(req,res){
+    res.cookie('JWT','',{maxAge : 1})
+    res.redirect('/')
+} 
 module.exports = {
+    redirectToIndex,
     indexController , 
-    loginController ,
     signupController,
     uploadController,
-    userController
+    userController,
+    loginController,
+    logoutController
+    
 }  
