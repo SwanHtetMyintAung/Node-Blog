@@ -1,11 +1,13 @@
 {
-  "name": "nodeonline",
+  "name": "nodeOnline",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
+
     "dev": "nodemon server",
-    "build": "npm run build"
+    "build": "npm run build",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",

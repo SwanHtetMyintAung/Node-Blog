@@ -17,7 +17,7 @@ mongoose.connect(process.env.DB_URI,{
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
-.then(result => app.listen(process.env.PORT || 3000))
+.then(result => app.listen(process.env.port || 3000))
 .catch(err => console.log(err))
 
 //necessary things
