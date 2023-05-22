@@ -30,11 +30,11 @@ app.use(authMiddleWare.checkUser)
 // Routes Started
 /*------------------Get Request------------------------- */
 app.get('/',getControllers.redirectToIndex)
-app.get('/blogs',authMiddleWare.requireAuth , getControllers.indexController)
+app.get('/blogs', getControllers.indexController)
 app.get('/user/sign-up' , getControllers.signupController)
 app.get('/blog/upload',getControllers.uploadController)
 app.get('/user/login',getControllers.loginController)
-app.get('/users',authMiddleWare.requireAuth,getControllers.userController)
+app.get('/users',getControllers.userController)
 app.get('/user/logout',getControllers.logoutController)
 
 

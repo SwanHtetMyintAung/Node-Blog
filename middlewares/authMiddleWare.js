@@ -8,7 +8,7 @@ function requireAuth(req, res, next) {
     jwt.verify(token, process.env.SECRET_KEY, (err, decodedToken) => {
       if (err) {
         console.log(err.message);
-        if (err.message === 'jwt expired') {
+        if (err.message == 'jwt expired') {
           res.cookie('JWT', '', { maxAge: 1 });
         }
         res.redirect('/user/sign-up');

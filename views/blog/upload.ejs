@@ -4,10 +4,11 @@
 <body>
   <%- include('../partials/Navbar.ejs') %>
 </body>
+<%if(user){%>
 <form class="upload-form" action="/blog/upload" method="POST">
     <h2>Blog Upload Form</h2>
     <input name="title" placeholder="Title" type="text">
-    <input name="author" placeholder="Author" type="text">
+      <input name="author" value="<%=user.name%>" readonly placeholder="Author" type="text">
     <textarea name="body"  placeholder="TextBody" type="text"></textarea>
     <div class="form-button-group">
         <button type="reset" class="form-button clearBtn">Clear</button>
@@ -15,4 +16,7 @@
     </div>
     
 </form>
+<%}else{%>
+  <h2>You Have To <a href="/user/login">Log in</a> To upload Blog</h2>
+  <%}%>
 </html>

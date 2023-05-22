@@ -6,7 +6,7 @@
 </body>
 
 <main class="show-all-users">
-  <% if(infos.length > 0 ) {%>
+  <% if(user && infos.length > 0 ) {%>
     <% infos.forEach(info =>{ %>
       <a href='/user/<%=info._id%>'>
         <div class="user-container">
@@ -15,11 +15,15 @@
       </div>
     </a>
     <%})%>
-    <%}else{%>
-      <div class="blog-container">
+    <%}else if(user && infos.length == 0){%>
+      <div class="error-container">
           <h2 style="color:#fff" class="title">Nothing To See Here</h2>
       </div>
-  <%}%>
+  <%}else{%>
+    <div class="error-container">
+      <h2><a href="/user/login">Login</a> To Access The Feature</h2>
+    </div>
+    <%}%>
   
 </main>
 </html>

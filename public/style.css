@@ -6,7 +6,7 @@ body{
     font-family: monospace;
   }
   a{
-    text-decoration: none;
+    text-decoration: underline;
     color:inherit;
   }
   /*navbar*/
@@ -17,8 +17,11 @@ body{
     align-items: center;
     background-color: #222222;
   }
-  nav.Navbar > a.nav-brand {
-    margin-left:5vh;
+  nav.Navbar > h2 >a.nav-brand {
+    margin-left:3vh;
+    text-decoration: none;
+    font-size: larger;
+    font-weight: bold;
   }
   div.nav-links > ul{
     display: flex;
@@ -27,10 +30,14 @@ body{
   div.nav-links > ul > li {
     margin-right: 5vh;
   }
+  div.nav-links > ul > li > a {
+    text-decoration: none;
+  }
   /*Form Style Upload / Login / Sign Up*/
-  form{
-    width:50%;
-    height:50vh;
+  form.upload-form ,  .login-form , .signup-form{
+    min-width:50%;
+    max-width: 700px;
+    height:40vh;
     margin:10vh auto;
     display: flex;
     flex-direction: column;
@@ -68,18 +75,20 @@ body{
 
   /*index.ejs*/
   main.show-all-blogs {
+    max-width: 100%;
     display: grid;
-    grid-template-columns: repeat(1fr);
+    margin: 0 auto;
+    grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
   }
   /*individual boxes*/
   main.show-all-blogs > a > div.blog-container {
+    width:80vw;
+    max-width: 90%;
     margin: 0 auto;
-    width:50%;
-    height: 100px;
-    max-width: 100%;
     background-color: #fff;
     color: #000000;
     padding: 0 10px;
+    
   }
   div.blog-container > .title {
     text-align: center;
@@ -144,6 +153,9 @@ body{
     line-height: 1.5;
     color: #ddd;
   }
+  hr {
+    width:100%;
+  }
   /*Show All Users*/
   div.show-all-users {
     display: grid;
@@ -151,18 +163,54 @@ body{
   }
   /*individual boxes*/
   main.show-all-users > a > div.user-container {
+    max-width:50%;
     margin: 0 auto;
-    width:50%;
-    height: 100px;
-    max-width: 100%;
+    min-width:300px;
     background-color: #fff;
     color: #000000;
     padding: 0 10px;
   }
+  div.error-container{
+    text-align: center;
+  }
+  /*Show Comments*/
+  div.display-comment{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin:0 auto;
+  }
+  /*comment form*/
+  form.comment-form{
+    display: flex;
+    width:80%;
+    margin:3vh auto;
+  }
+  form.comment-form > a{
+    background-color: #ddd;
+    color: #333;
+    font-family: inherit;
+    padding: 10px;
+  }
+  form.comment-form > input#name{
+    background-color: #ddd;
+    color: #333;
+    font-family: inherit;
+    padding: 10px;
+  }
+  form.comment-form > input#comment{
+    padding: 10px;
+    background-color: #fff;
+    
+  }
 
-/* Media queries for smaller screens */
-  @media screen and (max-width: 768px) {
-    main.show-all-video {
-      grid-template-columns: repeat(1, 1fr); /* Display 1 video in a row on smaller screens */
+  @media screen and (max-width: 480px) {
+    div.nav-links > ul > li {
+      font-size: 12px;
     }
   }
+  
+  
+  
+  
+  

@@ -19,7 +19,6 @@ const infoSchema = new Schema({
 
 //mongoose hooks
 infoSchema.post('save' , function(doc , next){
-    console.log("Hurray! New User Was Created" , doc)
     next()
 })
 

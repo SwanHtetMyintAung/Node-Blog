@@ -7,12 +7,38 @@
   <main class="singular-blog">
     <div class="utility-container">
       <h2 class="blog-title"><%= info.title %></h2>
-      <div onclick="deleteRequest('/blog/<%= info._id %>')" class="trash-bin-icon">
-        <i class="fas fa-trash black"></i>
-      </div>
+      <%if(user.name == info.author){%>
+        <div onclick="deleteRequest('/blog/<%= info._id %>')" class="trash-bin-icon">
+          <i class="fas fa-trash black"></i>
+        </div>
+      <%}%>
+      
     </div>
     <small class="blog-author"><%= info.author %></small>
     <p class="blog-body"><%= info.body %></p>
   </main>
+  <hr>
+  <%if(user){%>
+  <form class="comment-form" method="POST" action="/blog/<%=info._id%>">
+    <input id="name" name="name" value="<%=user.name%>" readonly>
+    <input id="comment" name="comment" placeholder="Write Comment">
+  </form>
+  <%}else{%>
+    <form class="comment-form">
+      <a href="/user/login">Login</a>
+      <input id="comment" name="comment" placeholder="To Write Comment" readonly>
+    </form>
+    <%}%>
+  <div class="display-comment">
+    <h2>No Comment at the moment!</h2>
+  </div>
 </body>
+
+<script>
+  const nameInput = document.getElementById('name');
+
+// Set input width based on text content length
+nameInput.style.width = `${nameInput.value.length}ch`;
+
+</script>
 </html>

@@ -4,7 +4,7 @@ const errorHandler = require('./errorHandler')
 const jwt = require('jsonwebtoken')
 const dotenv = require('dotenv').config();
 
-const maxAge = process.env.MAX_AGE;
+const maxAge = parseInt(process.env.MAX_AGE);
 const createToken = require('./createToken')
 
 function uploadController(req,res){
@@ -33,7 +33,7 @@ function userController(req,res){
     .then(result=> {
         const token = createToken(result._id , maxAge)
         res.cookie('user',result._id,{maxAge : maxAge * 1000})
-        res.cookie('JWT' , token , { httpOnly : true ,maxAge : maxAge * 1000})
+        res.cookie('JWT' , token , { httpOnly : true , maxAge : maxAge * 1000})
         res.redirect('/')
     })
     .catch(err =>{
@@ -51,7 +51,7 @@ async function loginController(req,res){
         const user = await USER.login(email , password)
         res.cookie('user',user,{maxAge : maxAge * 1000})
         const token = createToken(user._id , maxAge)
-        res.cookie('JWT' , token , { httpOnly : true ,maxAge : maxAge * 1000})
+        res.cookie('JWT' , token , { httpOnly : true , maxAge : maxAge * 1000})
         res.redirect('/users')
     }catch(err){
         console.log(err)
