@@ -32,6 +32,7 @@ function userController(req,res){
     newThingToSave.save()
     .then(result=> {
         const token = createToken(result._id , maxAge)
+        res.cookie('user',result._id,{maxAge : maxAge * 1000})
         res.cookie('JWT' , token , { httpOnly : true ,maxAge : maxAge * 1000})
         res.redirect('/')
     })
@@ -44,10 +45,11 @@ function userController(req,res){
         
     });
 }
-function loginController(req,res){
+async function loginController(req,res){
     const {email , password} = req.body;
     try{
-        const user = USER.login(email , password)
+        const user = await USER.login(email , password)
+        res.cookie('user',user,{maxAge : maxAge * 1000})
         const token = createToken(user._id , maxAge)
         res.cookie('JWT' , token , { httpOnly : true ,maxAge : maxAge * 1000})
         res.redirect('/users')

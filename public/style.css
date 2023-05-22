@@ -11,20 +11,21 @@ body{
   }
   /*navbar*/
   nav.Navbar{
+    max-width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #222222;
   }
   nav.Navbar > a.nav-brand {
-    margin-left:10vh;
+    margin-left:5vh;
   }
   div.nav-links > ul{
     display: flex;
     list-style: none;
   }
   div.nav-links > ul > li {
-    margin-right: 10vh;
+    margin-right: 5vh;
   }
   /*Form Style Upload / Login / Sign Up*/
   form{
@@ -39,7 +40,7 @@ body{
   }
   form > input , textarea {
     width:70%;
-    height:5vh;
+    height:3vh;
     background-color: inherit;
     border: none;
     border-bottom:1px solid white;

@@ -3,9 +3,15 @@
     <div class="nav-links">
         <ul>
           <li><a href="/users">Users</a></li>
-          <li><a href="/user/sign-up">Sign Up</a></li>
+        <% if (user) { %>
           <li><a href="/blog/upload">Upload</a></li>
           <li><a href="/user/logout">Log Out</a></li>
+        <% } else { %>
+          <li><a href="/user/sign-up">Sign Up</a></li>
+        <% } %>
+          
+          
+          
         </ul>
     </div>
 </nav>
