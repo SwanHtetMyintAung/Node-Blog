@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+
  <%- include('../partials/head.ejs') %>
 <body>
   <%- include('../partials/Navbar.ejs') %>
@@ -7,7 +6,7 @@
   <main class="singular-blog">
     <div class="utility-container">
       <h2 class="blog-title"><%= info.title %></h2>
-      <%if(user.name == info.author){%>
+      <%if(user && user.name == info.author){%>
         <div onclick="deleteRequest('/blog/<%= info._id %>')" class="trash-bin-icon">
           <i class="fas fa-trash black"></i>
         </div>
@@ -20,9 +19,11 @@
   <hr>
   <%if(user){%>
   <form class="comment-form" method="POST" action="/blog/<%=info._id%>">
-    <input id="name" name="name" value="<%=user.name%>" readonly>
-    <input id="comment" name="comment" placeholder="Write Comment">
+    <input id="name" name="user" value="<%=user.name%>" readonly>
+    <input id="comment" name="text" placeholder="Write Comment">
+    <button type="submit">Comment</button>
   </form>
+  <div class="errorMessage"></div>
   <%}else{%>
     <form class="comment-form">
       <a href="/user/login">Login</a>
@@ -30,15 +31,33 @@
     </form>
     <%}%>
   <div class="display-comment">
-    <h2>No Comment at the moment!</h2>
+    <%if(info.comments.length > 0){%>
+      <%info.comments.map(comment=>{%>
+        <h2><%=comment.user%> : <%=comment.text%></h2>
+      <%})%>    
+    <%}else{%>
+      <h2>No Comment At The Moment!</h2>
+      <%}%>
+    
   </div>
 </body>
 
 <script>
   const nameInput = document.getElementById('name');
+  const form = document.querySelector('form');
+  const errorMessage = document.querySelector('.errorMessage')
+  const comment = document.querySelector('#comment')
 
 // Set input width based on text content length
 nameInput.style.width = `${nameInput.value.length}ch`;
 
+//check form validation
+comment.addEventListener('keyup',(e)=>{
+  if(comment.value != ''){
+    errorMessage.textContent=''
+  }
+})
+CheckValidComment(errorMessage , form , comment)
+
 </script>
-</html>
+<%- include('../partials/footer.ejs') %>

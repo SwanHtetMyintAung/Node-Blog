@@ -11,7 +11,7 @@ function getOnlyOneBlog(req,res){
     }
     INFO.findById(searchId)
     .then(result =>{
-        res.render('blog/blogInfo' , {title:"blog" , info : result})
+        res.render('blog/blogInfo' , {title:"blog" , info : result })
     })
     .catch(err => console.log(err))
 }

@@ -8,7 +8,7 @@ function redirectToIndex(req,res){
 function indexController(req,res){
     INFO.find()
     .then((result) =>{
-        res.render('blog/index' , { title : "All Songs" , infos : result });
+        res.render('blog/index' , { title : "All Blogs" , infos : result });
     })
     .catch(err => console.log(err.value))
 }

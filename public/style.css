@@ -186,11 +186,12 @@ body{
     width:80%;
     margin:3vh auto;
   }
-  form.comment-form > a{
+  form.comment-form > a , button{
     background-color: #ddd;
     color: #333;
     font-family: inherit;
     padding: 10px;
+    border: none;
   }
   form.comment-form > input#name{
     background-color: #ddd;
@@ -201,9 +202,12 @@ body{
   form.comment-form > input#comment{
     padding: 10px;
     background-color: #fff;
-    
+    color:#000000;
   }
-
+  div.errorMessage{
+    text-align: center;
+    color:red;
+  }
   @media screen and (max-width: 480px) {
     div.nav-links > ul > li {
       font-size: 12px;

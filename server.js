@@ -37,11 +37,11 @@ app.get('/user/login',getControllers.loginController)
 app.get('/users',getControllers.userController)
 app.get('/user/logout',getControllers.logoutController)
 
-
 //post request
 app.post('/blog/upload',postControllers.uploadController)
 app.post('/user/sign-up',postControllers.userController)
 app.post('/user/login', postControllers.loginController)
+app.post('/blog/:id' , postControllers.commentController)
 
 //routes with id
 app.get('/blog/:id',idControllers.getOnlyOneBlog)
@@ -53,5 +53,3 @@ app.delete('/user/:id', idControllers.deleteOnlyOneUser)
 app.use((req , res)=>{
     res.status(404).render('404' , {title : "404"});
 })
-
-

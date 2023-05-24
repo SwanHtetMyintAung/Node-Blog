@@ -1,6 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema ; 
 
+const commentSchema = new mongoose.Schema({
+    author: String,
+    text: String,
+    createdAt: { type: Date, default: Date.now }
+  });
+  
 const infoSchema = new Schema({
     title:{
         type:String,
@@ -15,6 +21,18 @@ const infoSchema = new Schema({
         type:String,
         required:true
     },
+    comments:[
+        {
+          user:{
+            type:String
+          },
+          text: {
+            type:String,
+            min:1
+          },
+          createdAt: { type: Date, default: Date.now }
+        }
+      ]
 },{timestamps : true })
 
 //mongoose hooks

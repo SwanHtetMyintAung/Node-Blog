@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+
  <%- include('../partials/head.ejs') %>
 <body>
   <%- include('../partials/Navbar.ejs') %>
@@ -7,9 +6,11 @@
 <%if(user){%>
 <form class="upload-form" action="/blog/upload" method="POST">
     <h2>Blog Upload Form</h2>
-    <input name="title" placeholder="Title" type="text">
-      <input name="author" value="<%=user.name%>" readonly placeholder="Author" type="text">
-    <textarea name="body"  placeholder="TextBody" type="text"></textarea>
+    <input id="title" name="title" placeholder="Title" type="text">
+    <div class="errorMessage titleErrorMessage"></div>
+    <input id="author" name="author" value="<%=user.name%>" readonly placeholder="Author" type="text">
+    <textarea id="body" name="body"  placeholder="TextBody" type="text"></textarea>
+    <div class="errorMessage bodyErrorMessage"></div>
     <div class="form-button-group">
         <button type="reset" class="form-button clearBtn">Clear</button>
         <button type="submit" class="form-button" >Submit</button>
@@ -19,4 +20,15 @@
 <%}else{%>
   <h2>You Have To <a href="/user/login">Log in</a> To upload Blog</h2>
   <%}%>
-</html>
+  <script>
+    const titleErrorMessage = document.querySelector('.titleErrorMessage')
+    const bodyErrorMessage = document.querySelector('.bodyErrorMessage')
+    const form = document.querySelector('form')
+    const textTitle = document.querySelector('#title')
+    const textBody = document.querySelector('#body')
+    /*let validTitle = CheckValidInput(titleErrorMessage,form,textTitle);
+    let validBody = CheckValidInput(bodyErrorMessage,form,textBody)*/
+    CheckValidUpload(titleErrorMessage,bodyErrorMessage,form,textTitle,textBody)
+
+  </script>
+<%- include('../partials/footer.ejs') %>

@@ -58,8 +58,24 @@ async function loginController(req,res){
     }
     
 }
+async function commentController(req,res){
+    let searchId = req.params.id;
+    try{
+        const blog = await INFO.findById(searchId)
+        if(!blog){
+            res.redirect('/blogs')
+        }
+        const {user , text} = req.body;
+        blog.comments.push({user,text})
+        const savedComment = await blog.save()
+
+    }catch(err){
+        console.log(err)
+    }
+}
 module.exports = {
     uploadController,
     userController,
     loginController,
+    commentController
 }

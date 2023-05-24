@@ -4,7 +4,6 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-
     "dev": "nodemon server",
     "build": "npm run build",
     "start": "node server.js"
@@ -20,6 +19,7 @@
     "jsonwebtoken": "^9.0.0",
     "mongodb": "^5.2.0",
     "mongoose": "^7.0.3",
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "socket.io": "^4.6.1"
   }
 }
