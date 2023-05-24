@@ -68,7 +68,7 @@ async function commentController(req,res){
         const {user , text} = req.body;
         blog.comments.push({user,text})
         const savedComment = await blog.save()
-
+res.redirect('/blogs/'+searchId)
     }catch(err){
         console.log(err)
     }
