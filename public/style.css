@@ -121,7 +121,8 @@ body{
     display: flex;
     align-content: center;
   }
-  .show-singular > .utility-container > .blog-title {
+  .show-singular > .utility-container > .blog-title ,
+  .show-singular > .utility-container > .name{
     text-align: center;
     display: inline-block;
     text-transform: capitalize;
@@ -142,13 +143,8 @@ body{
     margin-top: 8vh;
     
   }
-  .show-singular > .utility-container > .profile {
-    margin-top: 8vh;
-    width:5vw;
-    height: 5vh;
-    background-color: #efd;
-  }
-  .show-singular > .blog-author{
+  .show-singular > .blog-author ,
+  .show-singular > .email , .post-count{
     display: block;
     text-align: center;
     font-size: 25px;

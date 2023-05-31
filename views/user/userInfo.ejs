@@ -5,30 +5,46 @@
   
   <main class="singular-user show-singular">
     <div class="utility-container">
-      <div class="profile">n</div>
-      <h2 class="blog-title name"><%= oneUser.name %></h2>
+      
+      <h2 class="name">
+        Name :<%= oneUser.name %>
+      </h2>
       <%if(user.name == oneUser.name){%>
-      <div onclick="deleteRequest('/user/<%= oneUser._id %>')" class="trash-bin-icon">
+      <div 
+        onclick="deleteRequest('/user/<%= oneUser._id %>')" 
+        class="trash-bin-icon">
         <i class="fas fa-trash black"></i>
       </div>
       <%}%>
     </div>
-    <small class="blog-author email"><%= oneUser.email %></small>
-
-    <hr>
+    <small class="email">
+      Email : <%= oneUser.email %>
+    </small>
+    <h3 class="post-count"">
+      Post Count : <%= infos.length %>
+    </h3>
+         <hr>
     <% if(infos.length > 0 ) {%>
       <% infos.forEach(info =>{ %>
         <a href="/blog/<%= info.id %>">
           <div class="blog-container">
-            <h2 class="title"><%= info.title %></h2>
-            <small class="author"><%= info.author %></small>
-            <p class="body"><%= info.body %></p>
+            <h2 class="title">
+              <%= info.title %>
+            </h2>
+            <small class="author">
+              <%= info.author %>
+            </small>
+            <p class="body">
+              <%= info.body %>
+            </p>
         </div>
       </a>
     <%})%>
     <%}else{%>
           <div class="blog-container">
-              <h2 style="color:#fff" class="title">Nothing To See Here</h2>
+              <h2 style="color:#fff" class="title">
+                Nothing To See Here
+              </h2>
           </div>
       <%}%>
   </main>

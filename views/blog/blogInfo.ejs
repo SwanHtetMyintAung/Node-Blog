@@ -46,9 +46,10 @@
 
 <script>
   const nameInput = document.getElementById('name');
-  const form = document.querySelector('form');
+  const commentInput = document.querySelector('#comment')
+  const form = document.querySelector('.comment-form');
   const errorMessage = document.querySelector('.errorMessage')
-  const comment = document.querySelector('#comment')
+  
 
 // Set input width based on text content length
 nameInput.style.width = `${nameInput.value.length}ch`;
@@ -59,7 +60,33 @@ comment.addEventListener('keyup',(e)=>{
     errorMessage.textContent=''
   }
 })
-CheckValidComment(errorMessage , form , comment)
+document.querySelector('.comment-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  const formData = new FormData();
+  formData.append('user', nameInput.value);
+  formData.append('text', commentInput.value);
+
+  fetch(e.target.action, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: new URLSearchParams(formData)
+  })
+    .then(result => {
+      console.log(result)
+      if (result.status === 200) {
+        location.reload();
+      } else {
+        console.log('Request failed');
+      }
+    })
+    .catch(error => {
+      console.error(error);
+    });
+});
+
 
 </script>
 <%- include('../partials/footer.ejs') %>
