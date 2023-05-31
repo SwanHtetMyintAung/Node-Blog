@@ -2,16 +2,36 @@
  <%- include('../partials/head.ejs') %>
 <body>
   <%- include('../partials/Navbar.ejs') %>
-
-  <main class="singular-user">
+  
+  <main class="singular-user show-singular">
     <div class="utility-container">
-      <h2 class="blog-title"><%= info.name %></h2>
-      <div onclick="deleteRequest('/user/<%= info._id %>')" class="trash-bin-icon">
+      <div class="profile">n</div>
+      <h2 class="blog-title name"><%= oneUser.name %></h2>
+      <%if(user.name == oneUser.name){%>
+      <div onclick="deleteRequest('/user/<%= oneUser._id %>')" class="trash-bin-icon">
         <i class="fas fa-trash black"></i>
       </div>
+      <%}%>
     </div>
-    <small class="blog-author"><%= info.email %></small>
-    <p class="blog-body"><%= info.password %></p>
+    <small class="blog-author email"><%= oneUser.email %></small>
+
+    <hr>
+    <% if(infos.length > 0 ) {%>
+      <% infos.forEach(info =>{ %>
+        <a href="/blog/<%= info.id %>">
+          <div class="blog-container">
+            <h2 class="title"><%= info.title %></h2>
+            <small class="author"><%= info.author %></small>
+            <p class="body"><%= info.body %></p>
+        </div>
+      </a>
+    <%})%>
+    <%}else{%>
+          <div class="blog-container">
+              <h2 style="color:#fff" class="title">Nothing To See Here</h2>
+          </div>
+      <%}%>
   </main>
+  
 </body>
 <%- include('../partials/footer.ejs') %>

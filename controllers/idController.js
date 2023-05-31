@@ -16,18 +16,20 @@ function getOnlyOneBlog(req,res){
     .catch(err => console.log(err))
 }
 
-function getOnlyOneUser(req,res){
+async function getOnlyOneUser(req,res){
   let searchId = req.params.id;
 
   if(!mongoose.Types.ObjectId.isValid(searchId)){
       res.status(404).render('404' , {title : "404"});
       return;
   }
-  USER.findById(searchId)
-  .then(result =>{
-      res.render('user/userInfo' , {title : result.name , info : result})
-  })
-  .catch(err => console.log(err))
+  let oneUser = await USER.findById(searchId)
+  let infos = await INFO.find({author : oneUser.name})
+  res.render('user/userInfo' , {
+    title : oneUser.name , 
+    infos , 
+    oneUser})
+  
 }
 
 function deleteOnlyOneBlog(req,res){

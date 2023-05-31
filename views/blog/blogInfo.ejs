@@ -3,7 +3,7 @@
 <body>
   <%- include('../partials/Navbar.ejs') %>
 
-  <main class="singular-blog">
+  <main class="singular-blog show-singular">
     <div class="utility-container">
       <h2 class="blog-title"><%= info.title %></h2>
       <%if(user && user.name == info.author){%>
@@ -13,7 +13,9 @@
       <%}%>
       
     </div>
-    <small class="blog-author"><%= info.author %></small>
+    <small class="blog-author">
+      <a href="user/<%=info._id%>"><%= info.author %></a>
+    </small>
     <p class="blog-body"><%= info.body %></p>
   </main>
   <hr>

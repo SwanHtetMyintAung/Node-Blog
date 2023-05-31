@@ -81,7 +81,7 @@ body{
     grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
   }
   /*individual boxes*/
-  main.show-all-blogs > a > div.blog-container {
+  main > a > div.blog-container {
     width:80vw;
     max-width: 90%;
     margin: 0 auto;
@@ -113,15 +113,15 @@ body{
   }
 
   /*Blog Info*/
-  main.singular-blog {
+  main.show-singular{
     width:80%;
     margin: 0 auto;
   }
-  .singular-blog > .utility-container {
+  .show-singular > .utility-container {
     display: flex;
     align-content: center;
   }
-  .singular-blog > .utility-container > .blog-title {
+  .show-singular > .utility-container > .blog-title {
     text-align: center;
     display: inline-block;
     text-transform: capitalize;
@@ -130,7 +130,7 @@ body{
     margin-bottom: 10px;
     flex-grow: 1;
   }
-  .singular-blog > .utility-container > .trash-bin-icon {
+  .show-singular > .utility-container > .trash-bin-icon {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -142,13 +142,19 @@ body{
     margin-top: 8vh;
     
   }
-  .singular-blog > .blog-author{
+  .show-singular > .utility-container > .profile {
+    margin-top: 8vh;
+    width:5vw;
+    height: 5vh;
+    background-color: #efd;
+  }
+  .show-singular > .blog-author{
     display: block;
     text-align: center;
     font-size: 25px;
     color: #ccc;
   }
-  .singular-blog > .blog-body{
+  .show-singular > .blog-body{
     font-size: 27px;
     line-height: 1.5;
     color: #ddd;
