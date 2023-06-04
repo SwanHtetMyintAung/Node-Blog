@@ -21,9 +21,11 @@
   <hr>
   <%if(user){%>
   <form class="comment-form" method="POST" action="/blog/<%=info._id%>">
-    <input id="name" name="user" value="<%=user.name%>" readonly>
-    <input id="comment" name="text" placeholder="Write Comment">
-    <button type="submit">Comment</button>
+    <input style="display: none;" id="name" name="user" value="<%=user.name%>" readonly>
+    <input id="comment" name="text" placeholder="Comment As <%=user.name%>">
+    <button type="submit">
+      <i class="fa fa-paper-plane" aria-hidden="true"></i>
+    </button>
   </form>
   <div class="errorMessage"></div>
   <%}else{%>

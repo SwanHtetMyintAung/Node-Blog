@@ -4,7 +4,7 @@
   <%- include('../partials/Navbar.ejs') %>
 </body>
 <%if(user){%>
-<form class="upload-form" action="/blog/upload" method="POST">
+<form class="upload-form up-form" action="/blog/upload" method="POST">
     <h2>Blog Upload Form</h2>
     <input id="title" name="title" placeholder="Title" type="text">
     <div class="errorMessage titleErrorMessage"></div>

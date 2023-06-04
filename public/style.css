@@ -1,222 +1,278 @@
+:root{
+  --main-bg-color-- : #000;
+  --main-text-color:#fff;
+  --main-font-family--:monospace;
+}
+
 body{
-    background: #000000;
+    background: var(--main-bg-color--);
     color:#ffffff;
     margin: 0;
     padding: 0;
-    font-family: monospace;
+    font-family: var(--main-font-family--);
   }
-  a{
-    text-decoration: underline;
-    color:inherit;
-  }
-  /*navbar*/
-  nav.Navbar{
-    max-width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #222222;
-  }
-  nav.Navbar > h2 >a.nav-brand {
-    margin-left:3vh;
-    text-decoration: none;
-    font-size: larger;
-    font-weight: bold;
-  }
-  div.nav-links > ul{
-    display: flex;
-    list-style: none;
-  }
-  div.nav-links > ul > li {
-    margin-right: 5vh;
-  }
-  div.nav-links > ul > li > a {
-    text-decoration: none;
-  }
-  /*Form Style Upload / Login / Sign Up*/
-  form.upload-form ,  .login-form , .signup-form{
-    min-width:50%;
-    max-width: 700px;
-    height:40vh;
-    margin:10vh auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-
-  }
-  form > input , textarea {
-    width:70%;
-    height:3vh;
-    background-color: inherit;
-    border: none;
-    border-bottom:1px solid white;
-    color:white;
-  }
-  form > textarea{
-    resize: none;
-    height: 10vh;
-  }
+a{
+  text-decoration: underline;
+  color:inherit;
+}
+/***********************************navbar*************************************/
+nav.Navbar{
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #222
+}
+nav.Navbar > h2 > a.nav-brand {
+  margin-left:3vh;
+  text-decoration: none;
+  font-size: larger;
+  font-weight: bold;
+  font-style: italic;
+}
+div.nav-links > ul{
+  display: flex;
+  list-style: none;
+}
+div.nav-links > ul > li {
+  margin-right: 5vh;
+}
+div.nav-links > ul > li > a {
+  text-decoration: none;
+}
+i:hover{
   
-  form > input:focus , textarea:focus {
-    outline: none;
-    border-bottom:1px solid white;
-  }
-  form > div.form-button-group{
-    width:100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-  div.form-button-group > button.form-button{
-    width:10vh;
-    height:5vh;
-  }
+  color: rgb(45,57,227);;
+}
+/******************************************Form Style Upload / Login / Sign Up***************************************/
+form.upload-form ,  .login-form , .signup-form{
+  min-width:50%;
+  max-width: 800px;
+  height:40vh;
+  margin:10vh auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 
-  /*index.ejs*/
-  main.show-all-blogs {
-    max-width: 100%;
-    display: grid;
-    margin: 0 auto;
-    grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
-  }
-  /*individual boxes*/
-  main > a > div.blog-container {
-    width:80vw;
-    max-width: 90%;
-    margin: 0 auto;
-    background-color: #fff;
-    color: #000000;
-    padding: 0 10px;
-    
-  }
-  div.blog-container > .title {
-    text-align: center;
-    text-transform: capitalize;
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 10px;
-  }
-  div.blog-container > .author {
-    display: block;
-    text-align: center;
-    font-size: 17px;
-    color: #777;
-  }
-  div.blog-container > .body {
-    font-size: 16px;
-    line-height: 1.5;
-    color: #555;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+}
+input::placeholder ,textarea::placeholder {
+  opacity: 0.7;
+  font-family: var(--main-font-family--);
+} 
+form > input , textarea  {
+  width:70%;
+  height:3.5vh;
+  background-color: inherit;
+  border: none;
+  border-bottom:1px solid rgba(255,255,255,0.27);
+  color:white;
+  font-family: var(--main-font-family--);
+}
+form > textarea{
+  resize: none;
+  height: 10vh;
+}
 
-  /*Blog Info*/
-  main.show-singular{
-    width:80%;
-    margin: 0 auto;
-  }
-  .show-singular > .utility-container {
-    display: flex;
-    align-content: center;
-  }
-  .show-singular > .utility-container > .blog-title ,
-  .show-singular > .utility-container > .name{
-    text-align: center;
-    display: inline-block;
-    text-transform: capitalize;
-    font-size:50px;
-    color: #fff;
-    margin-bottom: 10px;
-    flex-grow: 1;
-  }
-  .show-singular > .utility-container > .trash-bin-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width:30px;
-    height: 30px;
-    border-radius: 50%;
-    color: black;
-    background-color: white;
-    margin-top: 8vh;
-    
-  }
-  .show-singular > .blog-author ,
-  .show-singular > .email , .post-count{
-    display: block;
-    text-align: center;
-    font-size: 25px;
-    color: #ccc;
-  }
-  .show-singular > .blog-body{
-    font-size: 27px;
-    line-height: 1.5;
-    color: #ddd;
-  }
-  hr {
-    width:100%;
-  }
-  /*Show All Users*/
-  div.show-all-users {
-    display: grid;
-    grid-template-columns: repeat(1fr);
-  }
-  /*individual boxes*/
-  main.show-all-users > a > div.user-container {
-    max-width:50%;
-    margin: 0 auto;
-    min-width:300px;
-    background-color: #fff;
-    color: #000000;
-    padding: 0 10px;
-  }
-  div.error-container{
-    text-align: center;
-  }
-  /*Show Comments*/
+form > input:focus , textarea:focus {
+  outline: none;
+  border-bottom:1px solid white;
+}
+form > div.form-button-group{
+  width:100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+div.form-button-group > button.form-button{
+  width:10vh;
+  height:5vh;
+}
+
+/********************************************index.ejs********************************************/
+main.show-all-blogs {
+  max-width: 100%;
+  display: grid;
+  margin: 0 auto;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+}
+/***************************************************** individual boxes ***********************************/
+main > a > div.blog-container {
+  width:80vw;
+  height:20vh;
+  max-width: 90%;
+  margin: 0 auto;
+  background-color: #fff;
+  color: #000;
+  padding: 0 10px;
+  
+}
+div.blog-container > .title {
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+div.blog-container > .author {
+  display: block;
+  text-align: center;
+  font-size: 17px;
+  color: #777;
+}
+div.blog-container > .body {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #555;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/*********************************************************Blog Info**********************************************/
+main.show-singular{
+  width:100%;
+  margin: 0 auto;
+}
+.show-singular > .utility-container {
+  display: flex;
+  align-content: center;
+}
+.show-singular > .utility-container > .blog-title ,
+.show-singular > .utility-container > .name{
+  text-align: center;
+  display: inline-block;
+  text-transform: capitalize;
+  font-size:50px;
+  color: #fff;
+  margin-bottom: 10px;
+  flex-grow: 1;
+}
+.show-singular > .utility-container > .trash-bin-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:30px;
+  height: 30px;
+  border-radius: 50%;
+  color: black;
+  background-color: white;
+  margin-top: 8vh;
+  
+}
+.show-singular > .blog-author ,
+.show-singular > .email , .post-count{
+  display: block;
+  text-align: center;
+  font-size: 25px;
+  color: #ccc;
+}
+.show-singular > .blog-body{
+  font-size: 27px;
+  line-height: 1.5;
+  color: #ddd;
+}
+hr {
+  width:99%;
+}
+  /*******************************************************Show Comments*****************************************/
   div.display-comment{
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    margin:0 auto;
-  }
-  /*comment form*/
-  form.comment-form{
-    display: flex;
-    width:80%;
-    margin:3vh auto;
-  }
-  form.comment-form > a , button{
-    background-color: #ddd;
-    color: #333;
-    font-family: inherit;
-    padding: 10px;
-    border: none;
-  }
-  form.comment-form > input#name{
-    background-color: #ddd;
-    color: #333;
-    font-family: inherit;
-    padding: 10px;
-  }
-  form.comment-form > input#comment{
-    padding: 10px;
-    background-color: #fff;
-    color:#000000;
-  }
-  div.errorMessage{
-    text-align: center;
-    color:red;
-  }
-  @media screen and (max-width: 480px) {
-    div.nav-links > ul > li {
-      font-size: 12px;
-    }
-  }
-  
-  
-  
-  
-  
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin:0 auto;
+}
+/******************************************************comment form********************************************/
+form.comment-form{
+  display: flex;
+  width:80%;
+  margin:3vh auto;
+}
+form.comment-form > a ,
+form.comment-form > button{
+  background-color: #ddd;
+  color: #333;
+  font-family: inherit;
+  padding: 10px;
+  border: none;
+}
+form.comment-form > input#name{
+  background-color: #ddd;
+  color: #333;
+  font-family: inherit;
+  padding: 10px;
+}
+form.comment-form > input#comment{
+  padding: 10px;
+  background-color: #fff;
+  color:#000000;
+}
+/***********************************************************Show All Users*********************************/
+div.show-all-users {
+  display: grid;
+  grid-template-columns: repeat(1fr);
+}
+/***********************************************************individual boxes in users*********************************8888*/
+main.show-all-users > a > div.user-container {
+  max-width:50%;
+  margin: 0 auto;
+  min-width:300px;
+  background-color: #fff;
+  color: #000000;
+  padding: 0 10px;
+}
+div.error-container{
+  text-align: center;
+}
+
+div.errorMessage{
+  text-align: center;
+  color:red;
+}
+p.footer {
+  display: block;
+  position: absolute;
+  bottom: -1;
+  left:40%;
+  text-align: center;
+}
+@media screen and (max-width: 480px) {
+/***********************************navbar*************************************/
+div.nav-links > ul > li {
+  font-size: 12px;
+}
+/******************************************Form Style Upload / Login / Sign Up***************************************/
+form.up-form > input , textarea{
+  width: 95vw;
+}
+
+/********************************************index.ejs********************************************/
+main > a > div.blog-container {
+  width:100vw;
+}
+/***************************************************** individual boxes ***********************************/
+/*********************************************************Blog Info**********************************************/
+/*********************************************************User Info **********************************************/
+main.show-all-users > a > div.user-container > .name{
+  font-size: 20px;
+}
+
+main.singular-user > .utility-container > .name , 
+main.singular-user > .email , .post-count {
+  font-size: 15px;
+}
+.singular-user > .utility-container > .trash-bin-icon {
+  margin-top: 1vh;
+  margin-right: 0.5vw;
+}
+/*******************************************************Show Comments*****************************************/
+/******************************************************comment form********************************************/
+form.comment-form{
+  display: flex;
+  width:90vw;
+  margin:3vh auto;
+}
+form.comment-form > input {
+  flex-grow: 1;
+}
+}

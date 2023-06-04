@@ -2,10 +2,27 @@
     <h2><a href="/" class="nav-brand">Home</a></h2>
     <div class="nav-links">
         <ul>
-          <li><a href="/users">Users</a></li>
+          <li>
+            <a href="/users">
+              <i title="All Users" class="fas fa-users"></i>
+            </a>
+          </li>
         <% if (user) { %>
-          <li><a href="/blog/upload">Upload</a></li>
-          <li><a href="/user/<%=user._id%>">Profile</a></li>
+          <li>
+            <a href="/blog/upload">
+              <i title="New Post" class="fas fa-edit"></i>
+            </a>
+          </li>
+          <li>
+            <a href="/user/<%=user._id%>">
+              <i title="profile" class="fas fa-user"></i>
+            </a>
+          </li>
+          <li>
+            <a href="/user/logout">
+              <i title="Log Out" class="fas fa-sign-out-alt"></i>
+            </a>
+          </li>
         <% } else { %>
           <li><a href="/user/sign-up">Sign Up</a></li>
         <% } %>
