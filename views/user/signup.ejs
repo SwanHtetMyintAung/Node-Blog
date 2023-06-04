@@ -1,12 +1,14 @@
-
  <%- include('../partials/head.ejs') %>
 <body>
   <%- include('../partials/Navbar.ejs') %>
   <form class="signup-form up-form" action="/user/sign-up" method="POST">
     <h2>Sing Up Form</h2>
     <input placeholder="Name" name="name" class="name" type="text">
-    <input placeholder="Email" name="email" type="email">
-    <input placeholder="password" minlength="6" name="password" type="password">
+    <div class="errorMessage nameError"></div>
+    <input placeholder="Email" name="email" class="email" type="email">
+    <div class="errorMessage emailError"></div>
+    <input placeholder="password" minlength="6" class="password" name="password" type="password">
+    <div class="errorMessage passwordError"></div>
     <div class="form-button-group">
       <button type="reset" class="form-button clearBtn">Clear</button>
       <button type="submit" class="form-button" >Sign Up</button>
@@ -14,4 +16,27 @@
     <a href="/user/login">Already have an account? Login</a>
   </form>
 </body>
+<script>
+  let singUpForm = document.querySelector('.signup-form');
+  let nameInput = document.querySelector('.name');
+  let nameError = document.querySelector('.nameError')
+  let emailInput = document.querySelector('.email');
+  let emailError = document.querySelector('.emailError')
+  let passwordInput = document.querySelector('.password');
+  let passwordError = document.querySelector('.passwordError');
+  checkTyped(nameInput , nameError)
+  checkTyped(emailInput , emailError)
+  checkTyped(passwordInput , passwordError)
+  singUpForm.addEventListener('submit',(e)=>{
+    e.preventDefault()
+    let checkName = checkEmpty(nameInput , nameError);
+    let checkEmail =  checkEmpty(emailInput , emailError);
+    let checkPassword =  checkEmpty(passwordInput , passwordError)
+
+    checkName && checkEmail && checkPassword && e.target.submit()
+  })
+
+
+ 
+</script>
 <%- include('../partials/footer.ejs') %>

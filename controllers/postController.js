@@ -54,7 +54,7 @@ async function loginController(req,res){
         res.cookie('JWT' , token , { httpOnly : true , maxAge : maxAge * 1000})
         res.redirect('/users')
     }catch(err){
-        console.log(err)
+        res.status(401).json(err.message)
     }
     
 }

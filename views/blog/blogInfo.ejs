@@ -64,7 +64,10 @@ comment.addEventListener('keyup',(e)=>{
 })
 document.querySelector('.comment-form').addEventListener('submit', (e) => {
   e.preventDefault();
-
+  if(commentInput.value == ""){
+    errorMessage.textContent = "Comment Cannot Be Empty!";
+    return;
+  }
   const formData = new FormData();
   formData.append('user', nameInput.value);
   formData.append('text', commentInput.value);

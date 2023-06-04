@@ -5,11 +5,67 @@
 </body>
   <form class="login-form up-form" action="/user/login" method="POST">
     <h2>LogIn Form</h2>
-    <input placeholder="Email" name="email" type="email">
-    <input placeholder="Password" name="password" type="password">
+    <input placeholder="Email" class="email" name="email" type="email">
+    <div class="errorMessage emailError"></div>
+    <input placeholder="Password" class="password" name="password" type="password">
+    <div class="errorMessage passwordError"></div>
     <div class="form-button-group">
       <button type="reset" class="form-button clearBtn">Clear</button>
       <button type="submit" class="form-button" >Login</button>
     </div>
   </form>
+  <script>
+    let loginForm = document.querySelector('.login-form');
+    let emailInput = document.querySelector('.email');
+    let emailError = document.querySelector('.emailError')
+    let passwordInput = document.querySelector('.password');
+    let passwordError = document.querySelector('.passwordError');
+    
+    checkTyped(emailInput , emailError)
+    checkTyped(passwordInput , passwordError)
+    loginForm.addEventListener('submit',(e)=>{
+      e.preventDefault()
+      let checkEmail =  checkEmpty(emailInput , emailError);
+      let checkPassword =  checkEmpty(passwordInput , passwordError)
+      let formData;
+
+      if(checkEmail){
+        if(checkPassword){
+          formData = new FormData()
+          formData.append('email',emailInput.value)
+          formData.append('password',passwordInput.value)
+
+        }
+      }  
+
+      fetch('/user/login',{
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams(formData)
+      })
+      .then(response => {
+        if (response.redirected) {
+          window.location.href = response.url; // Redirect to the specified URL
+        } else {
+          return response.json(); // Proceed with parsing the response as JSON
+        }
+      })
+      .then(res => {
+        if (!res.ok) {
+          let result = res.toLowerCase();
+          if (result.includes('email')) {
+            emailError.textContent = "Invalid Email";
+          } else if (result.includes('password')) {
+            passwordError.textContent = "Invalid Password";
+          }
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    })
+
+  </script>
   <%- include('../partials/footer.ejs') %>
