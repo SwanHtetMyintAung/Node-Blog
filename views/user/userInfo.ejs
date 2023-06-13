@@ -9,7 +9,7 @@
       <h2 class="name">
         Name :<%= oneUser.name %>
       </h2>
-      <%if(user.name == oneUser.name){%>
+      <%if(user && user.name == oneUser.name){%>
       <div 
         onclick="deleteRequest('/user/<%= oneUser._id %>')" 
         class="trash-bin-icon">

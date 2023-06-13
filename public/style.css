@@ -236,6 +236,10 @@ p.footer {
   left:40%;
   text-align: center;
 }
+/***********404 error******************/
+.message404{
+  text-align: center;
+}
 @media screen and (max-width: 480px) {
 /***********************************navbar*************************************/
 div.nav-links > ul > li {

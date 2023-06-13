@@ -11,6 +11,7 @@ const authMiddleWare = require('./middlewares/authMiddleWare')
 const getControllers = require('./controllers/getController')
 const postControllers = require('./controllers/postController')
 const idControllers = require('./controllers/idController')
+const handleCustomErrors  = require('./middlewares/404')
 
 //database url
 mongoose.connect(process.env.DB_URI,{
@@ -44,12 +45,14 @@ app.post('/user/login', postControllers.loginController)
 app.post('/blog/:id' , postControllers.commentController)
 
 //routes with id
-app.get('/blog/:id',idControllers.getOnlyOneBlog)
-app.get('/user/:id',idControllers.getOnlyOneUser)
-app.delete('/blog/:id', idControllers.deleteOnlyOneBlog)
-app.delete('/user/:id', idControllers.deleteOnlyOneUser)
+app.get('/blog/:id',authMiddleWare.validateUserId,idControllers.getOnlyOneBlog)
+app.get('/user/:id',authMiddleWare.validateUserId,idControllers.getOnlyOneUser)
+app.delete('/blog/:id',authMiddleWare.validateUserId, idControllers.deleteOnlyOneBlog)
+app.delete('/user/:id',authMiddleWare.validateUserId, idControllers.deleteOnlyOneUser)
 
 //error 404 
-app.use((req , res)=>{
-    res.status(404).render('404' , {title : "404"});
-})
+// 404 Error Handler
+app.use((req, res, next) => {
+    handleCustomErrors(req, res, next);
+});
+  
